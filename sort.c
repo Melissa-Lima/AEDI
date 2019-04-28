@@ -51,6 +51,49 @@ void bubbleSort(registro *base, int n){
     while(bubbleUp(base,n));
 }
 
+// QUICK
+
+void partition(registro *base, int n){
+  int pivot = base[0];
+  int i, j  = 1;
+  for(j = 1; j<n; j++){
+    if(base[j].data < pivot){
+      swap(base[i],base[j]);
+      i++;
+    }
+  }
+  swap(registro[0],registro[i-1]);
+  return i-1;
+}
+
+void partitionHalf(registro *base, int n){
+  int pivot = base[n/2];
+  int i, j  = 0;
+  for(j = 0; j>=0; j--){
+    if(j==n/2){
+      j++;
+    }
+    if(i==n/2){
+      i++
+    }
+    if(base[j].data < pivot){
+      swap(base[i],base[j]);
+      i++;
+    }
+  }
+  swap(registro[p],registro[i-1]);
+  return i-1;
+}
+
+void quickSort(registro *base, int n){
+  int p;
+  if(n>0){
+    p = partition(base,n);
+    quickSort(base,p);
+    quickSort(base[p+1],n-p-1);
+  }
+}
+
 int main(){
     return 0;
 }
